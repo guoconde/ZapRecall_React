@@ -1,13 +1,10 @@
-import logoMini from '../assets/logo-mini.png'
+import Topo from './Topo'
 import btnVoltar from '../assets/turn.png'
-
 
 export default function Cartoes() {
     return (
         <div>
-            <header>
-                <img src={ logoMini } alt='Logo Pequena' />
-            </header>
+            <Topo />
             <Cartao />
         </div>
     )
@@ -34,6 +31,7 @@ function CartaoPergunta() {
         
 function CartaoResposta() {
     return (
-        <div className='resposta'>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Non ullamcorper at quis eu. Malesuada iaculis viverra a tincidunt arcu nullam. Orci tortor arcu placerat id sit et. Elementum in erat cras tortor at auctor diam.</div>
+        <div className='resposta'>É uma extensão da linguagem do JavaScript.</div>
     )
 }
+
