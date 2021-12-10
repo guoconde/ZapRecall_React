@@ -152,3 +152,11 @@ header img {
 .centralizado > div:last-child {
     text-align: center;
 }
+
+.cartoes.frente {
+    background-color: red;
+}
+
+.cartoes.verso {
+    background-color: green;
+}
