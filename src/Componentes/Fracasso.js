@@ -1,4 +1,5 @@
 import Topo from './Topo'
+import ReiniciarJogo from './ReiniciarJogo'
 import emoticonTriste from '../assets/sad.png'
 
 export default function Fracasso() {
@@ -10,11 +11,12 @@ export default function Fracasso() {
                     Putz.. 
                     <img src={ emoticonTriste } alt='Emoticon Feliz' />
                 </div>
-                <div>
+                <div className='texto-final'>
                     Você esqueceu alguns flashcards.. 
                     {<br/>}
                     Não desanime! Na próxima você consegue!
                 </div>
+                <ReiniciarJogo />
             </div>
         </>
     )

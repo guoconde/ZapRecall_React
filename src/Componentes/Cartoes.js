@@ -5,9 +5,6 @@ import btnVoltar from '../assets/turn.png'
 
 export default function Cartoes({ renderizarResultado, arrayPerguntas }) {
     
-    console.log(arrayPerguntas)
-    console.log(renderizarResultado)
-    
     return (
         <div>
             <Topo />

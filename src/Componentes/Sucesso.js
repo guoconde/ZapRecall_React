@@ -1,5 +1,7 @@
 import Topo from './Topo'
+import ReiniciarJogo from './ReiniciarJogo'
 import emoticonFeliz from '../assets/party.png'
+
 
 export default function Sucesso() {
     return (
@@ -10,9 +12,10 @@ export default function Sucesso() {
                     PARABÉNS! 
                     <img src={ emoticonFeliz } alt='Emoticon Feliz' />
                 </div>
-                <div>
+                <div className='texto-final'>
                     Você não esqueceu de nenhum flashcard!
                 </div>
+                <ReiniciarJogo />
             </div>
         </>
     )
