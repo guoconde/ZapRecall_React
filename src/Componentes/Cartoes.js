@@ -1,8 +1,13 @@
-import Topo from './Topo'
-import btnVoltar from '../assets/turn.png'
 import { useState } from 'react'
 
-export default function Cartoes() {
+import Topo from './Topo'
+import btnVoltar from '../assets/turn.png'
+
+export default function Cartoes({ renderizarResultado, arrayPerguntas }) {
+    
+    console.log(arrayPerguntas)
+    console.log(renderizarResultado)
+    
     return (
         <div>
             <Topo />
@@ -11,12 +16,14 @@ export default function Cartoes() {
     )
 }
 
-function Cartao() {
-    
+function Cartao({ renderizarResultado, arrayPerguntas }) {
+
+   
+
     const [ quantidadeCartoes, setQuantidadeCartoes ] = useState([1])
     let [ ladoDoCartao, setLadoDoCartao ] = useState('frente')
     let [ respostaDoCartao, setRespostaDoCartao ] = useState('')
-
+ 
     if(respostaDoCartao !== '' && respostaDoCartao === 'resposta-certa') {
         console.log('esta certo')
     } else {
@@ -26,6 +33,7 @@ function Cartao() {
     function virarCartao() {
         if(ladoDoCartao === 'frente') {
             setLadoDoCartao(ladoDoCartao = 'verso')
+            setRespostaDoCartao(respostaDoCartao = '')
         } else {
             setLadoDoCartao(ladoDoCartao = 'frente')
         }
@@ -47,8 +55,8 @@ function Cartao() {
                 <div className='pergunta'>O que é JSX?</div>
                 <BotaoVoltar />
             </div>
-                )
-            }
+            )
+        }
             
     function CartaoResposta() {
 
@@ -77,7 +85,7 @@ function Cartao() {
 
     function BotaoVoltar() {
         return (
-            <img src={ btnVoltar } alt="Botao Voltar" />
+            <img src={ btnVoltar } alt="Botao Voltar" onClick={() => renderizarResultado('paginaSucesso')}/>
         )
     }
 }
