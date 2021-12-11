@@ -3,19 +3,21 @@ import { useState } from 'react'
 import Topo from './Topo'
 import btnVoltar from '../assets/turn.png'
 
-export default function Cartoes({ renderizarResultado, arrayPerguntas }) {
+export default function Cartoes({ renderizarResultado, arrayPerguntas, baralhoEscolhido }) {
     
+    const arrayApelidoDoBaralho = baralhoEscolhido.split(' ')
+    const apelidoDoBaralho = arrayApelidoDoBaralho[arrayApelidoDoBaralho.length - 1]
+
     return (
         <div>
             <Topo />
+            <div className='apelido-baralho'>{apelidoDoBaralho}</div>
             <Cartao renderizarResultado={renderizarResultado} arrayPerguntas={arrayPerguntas}/>
         </div>
     )
 }
 
 function Cartao({ renderizarResultado, arrayPerguntas }) {
-
-   
 
     const [ quantidadeCartoes, setQuantidadeCartoes ] = useState([1])
     let [ ladoDoCartao, setLadoDoCartao ] = useState('frente')
