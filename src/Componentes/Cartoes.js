@@ -4,6 +4,8 @@ import Topo from './Topo'
 import btnVoltar from '../assets/turn.png'
 
 export default function Cartoes({ renderizarResultado, arrayPerguntas, baralhoEscolhido }) {
+
+    console.log(arrayPerguntas)
     
     const arrayApelidoDoBaralho = baralhoEscolhido.split(' ')
     const apelidoDoBaralho = arrayApelidoDoBaralho[arrayApelidoDoBaralho.length - 1]
@@ -19,7 +21,6 @@ export default function Cartoes({ renderizarResultado, arrayPerguntas, baralhoEs
 
 function Cartao({ renderizarResultado, arrayPerguntas }) {
 
-    const [ quantidadeCartoes, setQuantidadeCartoes ] = useState([1])
     let [ ladoDoCartao, setLadoDoCartao ] = useState('frente')
     let [ respostaDoCartao, setRespostaDoCartao ] = useState('')
  
@@ -46,28 +47,32 @@ function Cartao({ renderizarResultado, arrayPerguntas }) {
     
     function CartaoPergunta() {
         return (
-            <div className={`cartoes frente`}
-             onClick={virarCartao}>
-                <div className='topo-cartao'>
-                    <div>{ quantidadeCartoes }/{ arrayPerguntas.length }</div>
+            arrayPerguntas.map((a, i) => (
+                <div className={`cartoes frente`} key={i}
+                    onClick={virarCartao}>
+                    <div className='topo-cartao'>
+                        <div>{i + 1}/{ arrayPerguntas.length }</div>
+                    </div>
+                    <div className='pergunta'>{a.pergunta}</div>
+                    <BotaoVoltar />
                 </div>
-                <div className='pergunta'>O que é JSX?</div>
-                <BotaoVoltar />
-            </div>
+            ))
             )
         }
             
     function CartaoResposta() {
 
         return (
-            <div className={`cartoes verso ${respostaDoCartao}`}>
-                <div className='topo-cartao'>
-                    <span>O que é JSX?</span>
-                    <div>{ quantidadeCartoes }/{ quantidadeCartoes.length }</div>
+            arrayPerguntas.map((a, i) => (
+                <div className={`cartoes verso ${respostaDoCartao}`} key={i}>
+                    <div className='topo-cartao'>
+                        <span>{a.pergunta}</span>
+                        <div>{i + 1}/{ arrayPerguntas.length }</div>
+                    </div>
+                    <div className='resposta'>{a.resposta}</div>
+                    {respostaDoCartao !== '' ? <BotaoVoltar /> : <Respostas />}
                 </div>
-                <div className='resposta'>É uma extensão da linguagem do JavaScript.</div>
-                {respostaDoCartao !== '' ? <BotaoVoltar /> : <Respostas />}
-            </div>
+            ))
         )
     }
 

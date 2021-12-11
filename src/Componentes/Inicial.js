@@ -34,8 +34,8 @@ export default function Inicial({ renderizarCartoes, baralhos }) {
 function EscolherBaralho({ handle, baralhos, valorInput }) {
     return (
         <>
-            {baralhos.map(baralho => (
-                <button className="btn" onClick={() => handle('paginaCartoes', valorInput, baralho)}>
+            {baralhos.map((baralho, i) => (
+                <button className="btn" key={i} onClick={() => handle('paginaCartoes', valorInput, baralho)}>
                     {baralho}
                     <img src={ nextImagem } alt="next" />
                 </button>
