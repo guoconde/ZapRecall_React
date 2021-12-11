@@ -11,7 +11,7 @@ export default function Cartoes({ renderizarResultado, arrayPerguntas }) {
     return (
         <div>
             <Topo />
-            <Cartao />
+            <Cartao renderizarResultado={renderizarResultado} arrayPerguntas={arrayPerguntas}/>
         </div>
     )
 }
@@ -50,7 +50,7 @@ function Cartao({ renderizarResultado, arrayPerguntas }) {
             <div className={`cartoes frente`}
              onClick={virarCartao}>
                 <div className='topo-cartao'>
-                    <div>{ quantidadeCartoes }/{ quantidadeCartoes.length }</div>
+                    <div>{ quantidadeCartoes }/{ arrayPerguntas.length }</div>
                 </div>
                 <div className='pergunta'>O que é JSX?</div>
                 <BotaoVoltar />
