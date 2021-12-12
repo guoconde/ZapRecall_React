@@ -34,7 +34,7 @@ export default function App() {
     
     const paginas = {
         paginaInicial: <Inicial renderizarCartoes={mudarPagina} baralhos={baralhos} />,
-        paginaCartoes: <Cartoes renderizarResultado={mudarPagina} arrayPerguntas={perguntas[indiceBaralho]} baralhoEscolhido={baralhoEscolhido}/>,
+        paginaCartoes: <Cartoes renderizarResultado={mudarPagina} arrayPerguntas={perguntas[indiceBaralho]} baralhoEscolhido={baralhoEscolhido} meta={metaDeZap}/>,
         paginaSucesso: <Sucesso />,
         paginaFracasso: <Fracasso />
     }
