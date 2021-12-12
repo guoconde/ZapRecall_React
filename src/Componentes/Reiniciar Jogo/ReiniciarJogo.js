@@ -1,4 +1,4 @@
-import nextImagem from '../assets/next.png'
+import nextImagem from '../../assets/next.png'
 
 export default function ReiniciarJogo() {
     return (

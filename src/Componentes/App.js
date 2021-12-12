@@ -1,20 +1,21 @@
 import { useState } from 'react'
 
-import Inicial from './Inicial'
-import Cartoes from './Cartoes'
-import Sucesso from './Sucesso'
-import Fracasso from './Fracasso'
+import Inicial from './Pagina Inicial/Inicial'
+import Cartoes from './Cartoes/Cartoes'
+import Sucesso from './Tela final/Sucesso'
+import Fracasso from './Tela final/Fracasso'
 
 import '../css/reset.css'
 import '../css/style.css'
 
 export default function App() {
 
-    const [ metaDeZap, setMetaDeZap ] = useState(1)
+    const [ metaDeZap, setMetaDeZap ] = useState(0)
     const [ paginaAtual, setPaginaAtual ] = useState('paginaInicial')
     const [ baralhoEscolhido, setBaralhoEscolhido ] = useState('')
     const [ indiceBaralho, setIndiceBaralho ] = useState('')
 
+    console.log(metaDeZap, 'meta')
 
     const baralhos = ['Praticar React', 'Teste do Teste']
     
@@ -36,7 +37,7 @@ export default function App() {
         paginaInicial: <Inicial renderizarCartoes={mudarPagina} baralhos={baralhos} />,
         paginaCartoes: <Cartoes renderizarResultado={mudarPagina} arrayPerguntas={perguntas[indiceBaralho]} baralhoEscolhido={baralhoEscolhido} meta={metaDeZap}/>,
         paginaSucesso: <Sucesso />,
-        paginaFracasso: <Fracasso />
+        paginaFracasso: <Fracasso meta={metaDeZap}/>
     }
     
     function mudarPagina(pagina, valorInput, baralho) {

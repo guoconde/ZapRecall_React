@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import logoGrande from '../assets/logo.png'
-import nextImagem from '../assets/next.png'
+import logoGrande from '../../assets/logo.png'
+import nextImagem from '../../assets/next.png'
 
 export default function Inicial({ renderizarCartoes, baralhos }) {
 

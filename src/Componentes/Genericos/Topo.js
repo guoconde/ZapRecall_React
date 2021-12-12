@@ -1,4 +1,4 @@
-import logoMini from '../assets/logo-mini.png'
+import logoMini from '../../assets/logo-mini.png'
 
 export default function Topo() {
     return(
