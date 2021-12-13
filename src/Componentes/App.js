@@ -10,12 +10,10 @@ import '../css/style.css'
 
 export default function App() {
 
-    const [ metaDeZap, setMetaDeZap ] = useState(0)
+    const [ metaDeZap, setMetaDeZap ] = useState(3)
     const [ paginaAtual, setPaginaAtual ] = useState('paginaInicial')
     const [ baralhoEscolhido, setBaralhoEscolhido ] = useState('')
     const [ indiceBaralho, setIndiceBaralho ] = useState('')
-
-    console.log(metaDeZap, 'meta')
 
     const baralhos = ['Praticar React', 'Teste do Teste']
     
@@ -35,7 +33,7 @@ export default function App() {
     
     const paginas = {
         paginaInicial: <Inicial renderizarCartoes={mudarPagina} baralhos={baralhos} />,
-        paginaCartoes: <Cartoes renderizarResultado={mudarPagina} arrayPerguntas={perguntas[indiceBaralho]} baralhoEscolhido={baralhoEscolhido} meta={metaDeZap}/>,
+        paginaCartoes: <Cartoes renderizarResultado={mudarPagina} arrayPerguntas={perguntas[indiceBaralho]} baralhoEscolhido={baralhoEscolhido} meta={metaDeZap} />,
         paginaSucesso: <Sucesso />,
         paginaFracasso: <Fracasso meta={metaDeZap}/>
     }

@@ -1,10 +1,9 @@
 import Topo from '../Genericos/Topo'
 import ReiniciarJogo from '../Reiniciar Jogo/ReiniciarJogo'
+
 import emoticonTriste from '../../assets/sad.png'
 
 export default function Fracasso({ meta }) {
-
-    console.log(meta)
 
     return (
         <>
@@ -16,7 +15,7 @@ export default function Fracasso({ meta }) {
                 </div>
                 <div className='texto-final'>
                     Você não atingiu sua meta de {meta} flashcards..
-                    {<br />}
+                    <br />
                     Não desanime! Na próxima você consegue!
                 </div>
                 <ReiniciarJogo />
