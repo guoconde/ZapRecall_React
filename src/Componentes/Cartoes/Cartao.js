@@ -30,12 +30,12 @@ export default function Cartao({ renderizarResultado, arrayPerguntas, meta }) {
         let pergunta = arrayPerguntas[perguntaAtual]
 
         return (
-            <div className={`cartoes frente`} key={perguntaAtual}>
+            <div className={`cartoes frente`} key={perguntaAtual} data-identifier="flashcard">
                 <div className='topo-cartao'>
-                    <div>{perguntaAtual + 1}/{arrayPerguntas.length}</div>
+                    <div data-identifier="counter">{perguntaAtual + 1}/{arrayPerguntas.length}</div>
                 </div>
                 <div className='pergunta'>{pergunta.pergunta}</div>
-                <img src={Botao} alt="Botao Voltar" onClick={virarCartao} />
+                <img src={Botao} alt="Botao Voltar" onClick={virarCartao} data-identifier="arrow"/>
             </div>
         )
     }
@@ -45,10 +45,10 @@ export default function Cartao({ renderizarResultado, arrayPerguntas, meta }) {
         let resposta = arrayPerguntas[respostaAtual]
 
         return (
-            <div className={`cartoes verso ${respostaDoCartao}`} key={respostaAtual}>
+            <div className={`cartoes verso ${respostaDoCartao}`} key={respostaAtual} data-identifier="flashcard">
                 <div className='topo-cartao'>
                     <span>{resposta.pergunta}</span>
-                    <div>{respostaAtual + 1}/{arrayPerguntas.length}</div>
+                    <div data-identifier="counter">{respostaAtual + 1}/{arrayPerguntas.length}</div>
                 </div>
                 <div className='resposta'>{resposta.resposta}</div>
                 {respostaDoCartao !== '' ? <BotaoProximo /> : <Respostas />}
@@ -99,7 +99,7 @@ export default function Cartao({ renderizarResultado, arrayPerguntas, meta }) {
         }
 
         return (
-            <img src={Botao} alt="Botao Voltar" onClick={() => proximaPergunta(perguntaAtual)} />
+            <img src={Botao} alt="Botao Voltar" onClick={() => proximaPergunta(perguntaAtual)} data-identifier="arrow"/>
         )
     }
 }

@@ -35,7 +35,7 @@ function EscolherBaralho({ handle, baralhos, valorInput }) {
     return (
         <>
             {baralhos.map((baralho, i) => (
-                <button className="btn" key={i} onClick={() => handle('paginaCartoes', valorInput, baralho)}>
+                <button className="btn" key={i} onClick={() => handle('paginaCartoes', valorInput, baralho)} data-identifier="start-zap-recall">
                     {baralho}
                     <img src={ nextImagem } alt="next" />
                 </button>
