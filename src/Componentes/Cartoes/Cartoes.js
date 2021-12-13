@@ -10,7 +10,7 @@ export default function Cartoes({ renderizarResultado, arrayPerguntas, baralhoEs
         <div>
             <Topo />
             <div className='apelido-baralho'>{apelidoDoBaralho}</div>
-            <Cartao renderizarResultado={renderizarResultado} arrayPerguntas={arrayPerguntas} meta={meta} data-identifier="flashcard"/>
+            <Cartao renderizarResultado={renderizarResultado} arrayPerguntas={arrayPerguntas} meta={meta} />
         </div>
     )
 }

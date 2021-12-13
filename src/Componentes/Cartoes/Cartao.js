@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import Botao from '../../assets/turn.png'
+import CartaoPergunta from './Cartao Pergunta/CartaoPergunta'
+import CartaoResposta from './Cartao Resposta/CartaoResposta'
 
 export default function Cartao({ renderizarResultado, arrayPerguntas, meta }) {
 
@@ -21,85 +22,24 @@ export default function Cartao({ renderizarResultado, arrayPerguntas, meta }) {
 
     return (
         <>
-            {ladoDoCartao === 'frente' ? <CartaoPergunta /> : <CartaoResposta />}
+            {ladoDoCartao === 'frente' ?
+                <CartaoPergunta
+                    arrayPerguntas={arrayPerguntas}
+                    perguntaAtual={perguntaAtual}
+                    virarCartao={virarCartao} /> :
+                <CartaoResposta
+                    arrayPerguntas={arrayPerguntas}
+                    perguntaAtual={perguntaAtual}
+                    respostaAtual={respostaAtual}
+                    respostaDoCartao={respostaDoCartao}
+                    setRespostaDoCartao={setRespostaDoCartao}
+                    respostaCerta={respostaCerta}
+                    setPerguntaAtual={setPerguntaAtual}
+                    setRespostaAtual={setRespostaAtual}
+                    setLadoDoCartao={setLadoDoCartao}
+                    setRespostaCerta={setRespostaCerta}
+                    renderizarResultado={renderizarResultado}
+                    meta={meta} />}
         </>
     )
-
-    function CartaoPergunta() {
-
-        let pergunta = arrayPerguntas[perguntaAtual]
-
-        return (
-            <div className={`cartoes frente`} key={perguntaAtual} data-identifier="flashcard">
-                <div className='topo-cartao'>
-                    <div data-identifier="counter">{perguntaAtual + 1}/{arrayPerguntas.length}</div>
-                </div>
-                <div className='pergunta'>{pergunta.pergunta}</div>
-                <img src={Botao} alt="Botao Voltar" onClick={virarCartao} data-identifier="arrow"/>
-            </div>
-        )
-    }
-
-    function CartaoResposta() {
-
-        let resposta = arrayPerguntas[respostaAtual]
-
-        return (
-            <div className={`cartoes verso ${respostaDoCartao}`} key={respostaAtual} data-identifier="flashcard">
-                <div className='topo-cartao'>
-                    <span>{resposta.pergunta}</span>
-                    <div data-identifier="counter">{respostaAtual + 1}/{arrayPerguntas.length}</div>
-                </div>
-                <div className='resposta'>{resposta.resposta}</div>
-                {respostaDoCartao !== '' ? <BotaoProximo /> : <Respostas />}
-            </div>
-        )
-    }
-    
-  
-    function Respostas() {
-
-        function verificadorDeResposta(resposta) {
-            setRespostaDoCartao(resposta)
-
-            if(resposta === 'resposta-certa') {
-                setRespostaCerta(respostaCerta + 1)
-            }
-        }
-        
-        return (
-            <div className='respostas'>
-                <button className='btn resposta-aprendida' onClick={() => verificadorDeResposta('resposta-aprendida')}>Aprendi agora</button>
-                <button className='btn resposta-ausente' onClick={() => verificadorDeResposta('resposta-ausente')}>Não lembrei</button>
-                <button className='btn resposta-demorada' onClick={() => verificadorDeResposta('resposta-demorada')}>Lembrei com esforço</button>
-                <button className='btn resposta-certa' onClick={() => verificadorDeResposta('resposta-certa')}>Zap!</button>
-            </div>
-        )
-    }
-    
-    function BotaoProximo() {
-        
-        function proximaPergunta(posicaoAtual) {
-
-            if(posicaoAtual + 1 !== arrayPerguntas.length) {
-                setPerguntaAtual(posicaoAtual + 1)
-                setRespostaAtual(posicaoAtual + 1)
-                setLadoDoCartao('frente')
-            } else {
-                verificadorDeSucesso()
-            }
-        }
-
-        function verificadorDeSucesso() {
-            if(respostaCerta >= meta) {
-                renderizarResultado('paginaSucesso')
-            } else {
-                renderizarResultado('paginaFracasso', meta)
-            }
-        }
-
-        return (
-            <img src={Botao} alt="Botao Voltar" onClick={() => proximaPergunta(perguntaAtual)} data-identifier="arrow"/>
-        )
-    }
 }
